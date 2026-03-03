@@ -107,6 +107,7 @@ nav a {
     color: white;
     padding: 30px;
     font-size: 22px;
+    text-align: center;
 }
 
 .gallery-grid {
@@ -167,3 +168,4 @@ footer {
     padding: 15px;
 
 }
+
