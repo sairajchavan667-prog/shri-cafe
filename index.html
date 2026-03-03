@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>श्री Cafe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+    <div class="logo">श्री <span>Cafe</span></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Fresh Taste, Pure Happiness ☕</h1>
+        <p>Every bite feels like home.</p>
+        <div class="buttons">
+           <a href="#menu">
+            <button class="order-btn">Order Now</button>
+           </a>
+           <a href="http://www.instagram.com/shri_cafe.uttur" target="_blank">
+            <button class="visit-btn">Visit Us</button>
+        </a>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about">
+    <h2>Welcome to श्री Cafe</h2>
+    <p>
+        2022 पासून आम्ही quality food आणि fresh coffee serve करत आहोत.
+        आमचं ध्येय – प्रत्येक ग्राहकाला घरासारखी चव देणं.
+    </p>
+</section>
+
+<!-- Menu -->
+<section class="menu" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-container">
+        <div class="card">
+            <img src="images/Coffee.jpeg" alt="">
+            <h3>Hot Coffee</h3>
+            <p>₹20</p>
+           <button onclick="addToCart('Hot Coffee', 20)">Add to Cart</button>
+            
+        </div>
+
+        <div class="card">
+            <img src="images/Burger1.jpeg" alt="">
+            <h3>Veg Burger</h3>
+            <p>₹70</p>
+            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>
+
+            
+        </div>
+
+        <div class="card">
+            <img src="images/Fries.jpeg" alt="">
+            <h3>french fries</h3>
+            <p>₹70</p>
+          <button onclick="addToCart('French Fries', 70)">Add to Cart</button>
+           
+        </div>
+
+        <div class="card">
+            <img src="images/c.c.jpeg" alt="">
+            <h3>Cold Coffee</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Cold Coffee', 80)">Add to Cart</button>
+            
+        </div>
+    
+         <div class="card">
+            <img src="images/pizza.jpeg" >
+            <h3>Pizza</h3>
+            <p>₹130</p>
+            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>
+
+            
+        </div>
+        <div class="card">
+            <img src="images/maggie.jpeg" >
+            <h3>Maggie</h3>
+            <p>₹50</p>
+            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>   
+        </div>
+        <div class="card">
+            <img src="images/nuggets.jpeg">
+            <h3>Nuggets</h3>
+            <p>₹70</p>
+            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>
+
+            
+        </div>
+        <div class="card">
+            <img src="images/ice cream.jpeg" >
+            <h3>Ice cream</h3>
+            <p>₹40</p>
+            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>     
+        </div>
+        <button onclick="toggleCart()" class="cart-btn">
+🛒 Cart (<span id="cart-count">0</span>)
+</button>
+</section>
+
+<!-- Special Offer -->
+<section class="special">
+    <h2 >🔥 Cheese Burst Pizza ₹159 Today!</h2>
+</section>
+
+<!-- Gallery -->
+<section class="gallery" id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-grid">
+        <img src="images/front.jpeg" alt="">
+        <img src="images/entry view.jpg" alt="">  
+        <img src="images/family.jpg" alt="">
+        <img src="images/kitchen entry.jpg" alt="">
+        <img src="images/birth.jpg" alt="">
+        <img src="images/besin.jpg" alt="">
+        <img src="images/front seat.jpg" alt="">
+        <img src="images/special cold coffee.jpg" alt="">
+        <img src="images/maggie.jpeg " alt="">
+        <img src="images/Sandwich.jpeg" alt="">
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews" id="reviews">
+    <h2>What Our Customers Say</h2>
+    <p>“Amazing food and cozy ambience. Loved it!”</p>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Uttur,kolhapur</p>
+    <p>📞 +91 8857082324</p>
+</section>
+<!-- Cart Popup -->
+<div id="cart-popup" class="cart-popup">
+    <div class="cart-content">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <h3>Total: ₹<span id="cart-total">0</span></h3>
+        <button onclick="checkout()">order now</button>
+        <button onclick="toggleCart()">Close</button>
+    </div>
+</div>
+<footer>
+    <p>© 2026 श्री Cafe | All Rights Reserved</p>
+</footer>
+<script>
+let cart = [];
+
+function addToCart(item, price) {
+    cart.push({item, price});
+    updateCart();
+}
+
+function updateCart() {
+    let cartItems = document.getElementById("cart-items");
+    let cartCount = document.getElementById("cart-count");
+    let cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((product, index) => {
+        total += product.price;
+
+        cartItems.innerHTML += `
+            <li>
+                ${product.item} - ₹${product.price}
+                <button onclick="removeItem(${index})">❌</button>
+            </li>
+        `;
+    });
+
+    cartCount.innerText = cart.length;
+    cartTotal.innerText = total;
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function toggleCart() {
+    document.getElementById("cart-popup").classList.toggle("active");
+}
+
+function checkout() {
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
+    let message = "Hello, I want to order:\n\n";
+    let total = 0;
+
+    cart.forEach(item => {
+        message += item.item + " - ₹" + item.price + "\n";
+        total += item.price;
+    });
+
+    message += "Total: ₹" + total;
+
+    window.open("https://wa.me/918857082324?text=" + encodeURIComponent(message));
+}
+</script>
+</body>
+</html>
