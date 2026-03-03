@@ -32,7 +32,7 @@ nav a {
 
 .hero {
     height: 80vh;
-    background: url(images/BG.jpeg) center/cover;
+    background: url(BG.jpeg) center/cover;
     display: flex;
     align-items: center;
     padding-left: 80px;
@@ -165,4 +165,5 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
+
 }
