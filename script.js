@@ -11,6 +11,7 @@ window.onload = function(){
     if(stored) cart = JSON.parse(stored);
 
     updateCart();
+    loadReviews();
 }
 
 function searchFood(){
@@ -166,4 +167,29 @@ document.getElementById("review-list").prepend(reviewBox);
 
 document.getElementById("review-name").value = "";
 document.getElementById("review-text").value = "";
+    saveReviews();
+
+}
+function saveReviews(){
+    let reviews = [];
+    document.querySelectorAll(".review-box").forEach(box=>{
+        reviews.push(box.innerHTML);
+    });
+
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+}
+
+function loadReviews(){
+    let saved = localStorage.getItem("reviews");
+    if(saved){
+        let reviews = JSON.parse(saved);
+
+        reviews.forEach(r=>{
+            let reviewBox = document.createElement("div");
+            reviewBox.classList.add("review-box");
+            reviewBox.innerHTML = r;
+
+            document.getElementById("review-list").appendChild(reviewBox);
+        });
+    }
 }
