@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+   
 <head>
     <meta charset="UTF-8">
     <title>श्री Cafe</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="icon" href="images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Shri Cafe Uttur - Best coffee, burger, pizza and snacks near new bus stop Uttur Kolhapur.">
+</head> 
 <body>
+    <div id="loader">
+<h2>☕ Shri Cafe</h2>
+</div>
 
 <!-- Navbar -->
 <header>
@@ -16,6 +24,11 @@
         <a href="#gallery">Gallery</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
+       
+
+         <button onclick="toggleCart()" class="cart-btn">
+🛒 Cart (<span id="cart-count">0</span>)
+</button>
         
     </nav>
 </header>
@@ -32,6 +45,7 @@
            <a href="http://www.instagram.com/shri_cafe.uttur" target="_blank">
             <button class="visit-btn">Visit Us</button>
         </a>
+    
         </div>
     </div>
 </section>
@@ -48,71 +62,234 @@
 <!-- Menu -->
 <section class="menu" id="menu">
     <h2>Our Menu</h2>
+    <input type="text" id="search" placeholder="Search food..." onkeyup="searchFood()">
+<h2></h2>
     <div class="menu-container">
         <div class="card">
-            <img src="Coffee.jpeg" alt="">
+            <img src="Coffee.jpeg" alt="Hot Coffee">
             <h3>Hot Coffee</h3>
             <p>₹20</p>
-           <button onclick="addToCart('Hot Coffee', 20)">Add to Cart</button>
-            
+           <button onclick="addToCart('Hot Coffee', 20)">Add to Cart</button>  
         </div>
 
-        <div class="card">
-            <img src="Burger1.jpeg" alt="">
-            <h3>Veg Burger</h3>
-            <p>₹70</p>
-            <button onclick="addToCart('Veg Burger', 70)">Add to Cart</button>
-
-            
-        </div>
-
-        <div class="card">
-            <img src="Fries.jpeg" alt="">
-            <h3>french fries</h3>
-            <p>₹70</p>
-          <button onclick="addToCart('French Fries', 70)">Add to Cart</button>
-           
-        </div>
-
-        <div class="card">
-            <img src="c.c.jpeg" alt="">
-            <h3>Cold Coffee</h3>
-            <p>₹80</p>
-            <button onclick="addToCart('Cold Coffee', 80)">Add to Cart</button>
-            
-        </div>
-    
          <div class="card">
-            <img src="pizza.jpeg" >
-            <h3>Pizza</h3>
-            <p>₹130</p>
-            <button onclick="addToCart('Pizza', 130)">Add to Cart</button>
-
-            
+            <img src="Burger1.jpeg" alt="Veg Burger">
+            <h3>Veg Burger</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('Veg Burger', 60)">Add to Cart</button>   
         </div>
+
         <div class="card">
-            <img src="maggie.jpeg" >
+            <img src="cheese-burger.jpeg" alt="Veg Cheese Burger">
+            <h3>Veg Cheese Burger</h3>
+            <p>₹70</p>
+            <button onclick="addToCart('Veg Cheese Burger', 70)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="special-burger.jpeg" alt="Special Cheese Burger">
+            <h3>Special Cheese Burger</h3>
+            <p>₹120</p>
+            <button onclick="addToCart('Special Cheese Burger', 120)">Add to Cart</button>   
+        </div>
+
+         <div class="card">
+            <img src="Fries.jpeg" alt="French Fries">
+            <h3>French Fries</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('French Fries', 60)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Peri-Peri-Fries.jpeg" alt="Peri Peri Fries">
+            <h3>Peri Peri Fries</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Peri Peri Fries', 80)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="cheesy-feies.jpeg" alt="Cheesy Fries">
+            <h3>Cheesy Fries</h3>
+            <p>₹100</p>
+            <button onclick="addToCart('Cheesy Fries', 100)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="nuggets.jpeg" alt="Nuggets">
+            <h3>Nuggets</h3>
+            <p>₹70</p>
+            <button onclick="addToCart('Nuggets', 70)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="G-sandwitch.jpeg" alt="Grilled Sandwich">
+            <h3>Grilled Sandwich</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('Grilled Sandwich', 60)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="G-cheese-sandwitch.jpeg" alt="Grilled Cheese Sandwich">
+            <h3>Grilled Cheese Sandwich</h3>
+            <p>₹70</p>
+            <button onclick="addToCart('Grilled Cheese Sandwich', 70)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="corn-sandwich.jpeg" alt=" Grilled Cheese Corn Sandwich">
+            <h3>Grilled Cheese Corn Sandwich</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Grilled Cheese Corn Sandwich', 80)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="panner-sandwich.jpeg" alt="Grilled Cheese Paneer Sandwich">
+            <h3>Grilled Cheese Paneer Sandwich</h3>
+            <p>₹90</p>
+            <button onclick="addToCart('Grilled Cheese Paneer Sandwich', 90)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="cutlet.jpeg" alt="Grilled Cheese Cutlet Sandwich">
+            <h3>Grilled Cheese Cutlet Sandwich</h3>
+            <p>₹90</p>
+            <button onclick="addToCart('Grilled Cheese Cutlet Sandwich', 90)">Add to Cart</button>   
+        </div>
+
+            <div class="card">
+            <img src="Bombay.jpeg" alt="Bombay Cheese Sandwich">
+            <h3>Bombay Cheese Sandwich</h3>
+            <p>₹110</p>
+            <button onclick="addToCart('Bombay Cheese Sandwich', 110)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="special-sandwich.jpeg" alt=" Special Cheese Sandwich">
+            <h3>Special Cheese Sandwich</h3>
+            <p>₹130</p>
+            <button onclick="addToCart('Special Cheese Sandwichs', 130)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="corn-pizza.jpeg" alt="corn pizza">
+            <h3>Cheese Corn Pizza</h3>
+            <p>₹130</p>
+            <button onclick="addToCart('Cheese Corn Pizza', 130)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="pizza.jpeg" alt=" Mix Veg Pizza">
+            <h3>Mix Veg Pizza</h3>
+            <p>₹130</p>
+            <button onclick="addToCart('Mix Veg Pizza', 130)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="olives-piza.jpeg" alt=" Cheese Olives Pizza">
+            <h3>Cheese Olives Pizza</h3>
+            <p>₹140</p>
+            <button onclick="addToCart('Cheese Olives Pizza', 140)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="corn&mix-pizza.jpeg" alt="Corn & Mix Veg Pizza">
+            <h3>Corn & Mix Veg Pizza</h3>
+            <p>₹150</p>
+            <button onclick="addToCart('Corn & Mix Veg Pizza', 150)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="corn&olives-pizza.jpeg" alt="Corn & Olives Pizza">
+            <h3>Corn & Olives Pizza</h3>
+            <p>₹150</p>
+            <button onclick="addToCart('Corn & Olives Pizza', 150)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="olives&mix-pizza.jpeg" alt=" Olives & Mix Veg Pizza">
+            <h3>Olives & Mix Veg Pizza</h3>
+            <p>₹150</p>
+            <button onclick="addToCart('Olives & Mix Veg Pizza', 150)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="panner-pizza.jpeg" alt="Paneer Tikka Pizza">
+            <h3>Paneer Tikka Pizza</h3>
+            <p>₹160</p>
+            <button onclick="addToCart('Paneer Tikka Pizza', 160)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="cutlet-pizza.jpeg" alt="Veg Cutlet Pizza">
+            <h3>Veg Cutlet Pizza</h3>
+            <p>₹160</p>
+            <button onclick="addToCart('Veg Cutlet Pizza', 160)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="cheese-burst-pizza.jpeg" alt=" Cheese Burst Pizza">
+            <h3>Cheese Burst Pizza</h3>
+            <p>₹170</p>
+            <button onclick="addToCart('Cheese Burst Pizza', 170)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="special-pizza.jpeg" alt=" Special Golden Pizza">
+            <h3>Special Golden Pizza</h3>
+            <p>₹220</p>
+            <button onclick="addToCart('Special Golden Pizza', 220)">Add to Cart</button>   
+        </div>
+
+        <div class="card">
+            <img src="maggie.jpeg" alt="Maggie">
             <h3>Maggie</h3>
             <p>₹50</p>
             <button onclick="addToCart('Maggie', 50)">Add to Cart</button>   
         </div>
+        
         <div class="card">
-            <img src="nuggets.jpeg">
-            <h3>Nuggets</h3>
-            <p>₹70</p>
-            <button onclick="addToCart('Nuggets', 70)">Add to Cart</button>
+            <img src="cold-coffee.jpeg" alt="Cold Coffee">
+            <h3>Cold Coffee</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('Cold Coffee', 60)">Add to Cart</button>  
+        </div>
 
-            
+         <div class="card">
+            <img src="Cold-Coffee-with-Ice Cream.jpeg" alt="Ice Cream">
+            <h3>Cold Coffee with Ice Cream</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Cold Coffee with Ice Cream',80)">Add to Cart</button>     
         </div>
+
         <div class="card">
-            <img src="ice cream.jpeg" >
-            <h3>Ice cream</h3>
-            <p>₹40</p>
-            <button onclick="addToCart('Ice cream', 40)">Add to Cart</button>     
+            <img src="cold-crush.jpeg" alt="Cold-Coffee-with-Crush">
+            <h3>Cold Coffee With Crush</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Cold Coffee With Crush', 80)">Add to Cart</button>   
         </div>
-        <button onclick="toggleCart()" class="cart-btn">
-🛒 Cart (<span id="cart-count">0</span>)
-</button>
+
+        <div class="card">
+            <img src="special cold coffee.jpg" alt="special cold coffee">
+            <h3>Special Cold Coffee</h3>
+            <p>₹110</p>
+            <button onclick="addToCart('Special Cold Coffee',110)">Add to Cart</button>     
+        </div>
+
+        <div class="card">
+            <img src="kaju.jpeg" alt="Kaju Shake">
+            <h3>Kaju Shake</h3>
+            <p>₹60</p>
+            <button onclick="addToCart('Kaju Shake',60)">Add to Cart</button>     
+        </div>
+
+        <div class="card">
+            <img src="ice cream.jpeg" alt="Ice Cream">
+            <h3>Ice Cream</h3>
+            <p>₹40</p>
+            <button onclick="addToCart('Ice Cream',40)">Add to Cart</button>     
+        </div>
+
+    </div> 
 </section>
 
 <!-- Special Offer -->
@@ -125,12 +302,12 @@
     <h2>Photo Gallery</h2>
     <div class="gallery-grid">
         <img src="front.jpeg" alt="">
-        <img src="entry view.jpg" alt="">  
+        <img src="entry view.jpg" alt="">
+        <img src="front seat.jpg" alt="">  
         <img src="family.jpg" alt="">
         <img src="kitchen entry.jpg" alt="">
         <img src="birth.jpg" alt="">
         <img src="besin.jpg" alt="">
-        <img src="front seat.jpg" alt="">
         <img src="special cold coffee.jpg" alt="">
         <img src="maggie.jpeg " alt="">
         <img src="Sandwich.jpg" alt="">
@@ -140,14 +317,58 @@
 <!-- Reviews -->
 <section class="reviews" id="reviews">
     <h2>What Our Customers Say</h2>
-    <p>“Amazing food and cozy ambience. Loved it!”</p>
+    
+
+<div class="review-box">
+<p>⭐⭐⭐⭐⭐ Amazing food and cozy ambience. Loved it!</p>
+</div>
+
+<div class="review-box">
+<p>⭐⭐⭐⭐ Best coffee in Uttur!</p>
+</div>
+
+<div class="review-box">
+<p>⭐⭐⭐⭐⭐ Pizza was delicious 😍</p>
+</div>
+
+<h3>Add Your Review</h3>
+
+<input type="text" id="review-name" placeholder="Your Name">
+
+<textarea id="review-text" placeholder="Write your review"></textarea>
+
+<button onclick="addReview()">Submit Review</button>
+
+<div id="review-list"></div>
 </section>
 
 <!-- Contact -->
 <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>📍 Near new bus stop,<br> Uttur,kolhapur</p>
-    <p>📞 +91 8857082324</p>
+<h2>Contact Us</h2>
+
+<p>📍 Near New Bus Stop,<br> Uttur, Kolhapur</p>
+
+<p>
+<a href="tel:+918857082324">
+📞 Call Now
+</a>
+</p>
+
+<p>
+<a href="https://wa.me/918857082324" target="_blank">
+💬 WhatsApp Order
+</a>
+</p>
+
+<p>
+<a href="https://maps.app.goo.gl/j1Uy5aq6be7kbCt5A" target="_blank">
+📍 Open in Google Maps
+</a>
+</p>
+
+<!-- Google Map -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d569.4371693194063!2d74.26116735572921!3d16.23578388378663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc08ba61a91a3a7%3A0x7fe96042eda5b5cb!2sShri%20Cafe%20%2CUttur!5e0!3m2!1sen!2sin!4v1772700817902!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 </section>
 <!-- Cart Popup -->
 <div id="cart-popup" class="cart-popup">
@@ -155,77 +376,33 @@
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul>
         <h3>Total: ₹<span id="cart-total">0</span></h3>
-        <button onclick="checkout()">order now</button>
+        <input type="text" id="cust-name" placeholder="Your Name">
+
+        <input type="text" id="cust-address" placeholder="Your Address">
+        
+        <input type="text" id="cust-number" placeholder="Your Number">
+        <br>
+        <button onclick="checkout()">Place Order</button>
+        <button onclick="clearCart()">Clear All</button>
         <button onclick="toggleCart()">Close</button>
     </div>
 </div>
+<a href="https://wa.me/918857082324" class="whatsapp-float" target="_blank">
+💬
+</a>
+<div id="order-count"></div>
+<div id="success-popup" class="success-popup">
+    <div class="success-box">
+        <h2>✅ Order Sent!</h2>
+        <p>Your order was sent on WhatsApp.</p>
+        <button onclick="closeSuccess()">OK</button>
+    </div>
+</div>
 <footer>
+    <p>Made with ❤️ in Uttur</p>
     <p>© 2026 श्री Cafe | All Rights Reserved</p>
 </footer>
-<script>
-let cart = [];
 
-function addToCart(item, price) {
-    cart.push({item, price});
-    updateCart();
-}
-
-function updateCart() {
-    let cartItems = document.getElementById("cart-items");
-    let cartCount = document.getElementById("cart-count");
-    let cartTotal = document.getElementById("cart-total");
-
-    cartItems.innerHTML = "";
-    let total = 0;
-
-    cart.forEach((product, index) => {
-        total += product.price;
-
-        cartItems.innerHTML += `
-            <li>
-                ${product.item} - ₹${product.price}
-                <button onclick="removeItem(${index})">❌</button>
-            </li>
-        `;
-    });
-
-    cartCount.innerText = cart.length;
-    cartTotal.innerText = total;
-}
-
-function removeItem(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-function toggleCart() {
-    document.getElementById("cart-popup").classList.toggle("active");
-}
-
-function checkout() {
-    if(cart.length === 0){
-        alert("Cart is empty!");
-        return;
-    }
-
-    let message = "Hello, I want to order:\n\n";
-    let total = 0;
-
-    cart.forEach(item => {
-        message += item.item + " - ₹" + item.price + "\n";
-        total += item.price;
-    });
-
-    message += "Total: ₹" + total;
-
-    window.open("https://wa.me/918857082324?text=" + encodeURIComponent(message));
-}
-</script>
+<script src="script.js" defer></script>
 </body>
-
 </html>
-
-
-
-
-
