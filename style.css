@@ -45,7 +45,7 @@ nav a {
 
 .hero {
     height: 80vh;
-    background: url(BG.jpeg) center/cover;
+    background: url(BG.jpeg) center/cover no-repeat;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -333,4 +333,5 @@ cursor:pointer;
 display:block;
 margin:10px auto;
 }
+
 
