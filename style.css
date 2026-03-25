@@ -19,6 +19,9 @@ body {
 }
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -334,4 +337,8 @@ display:block;
 margin:10px auto;
 }
 
-
+.clicked{
+    transform: scale(1.1);
+    background-color: #ff944d !important;
+    box-shadow:0 0 10px #ff944d;
+}
