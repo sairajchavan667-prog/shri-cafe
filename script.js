@@ -25,7 +25,7 @@ function searchFood(){
 }
 
 // Add to cart with quantity support
-function addToCart(item, price) {
+function addToCart(btn,item, price) {
     const existing = cart.find(p => p.item === item);
     if(existing){
         existing.qty += 1;
@@ -41,6 +41,44 @@ cartButton.classList.remove("shake");
 },300);
     saveCart();
     updateCart();
+
+    // 🔥 FLY TO CART EFFECT
+    let card = btn.closest(".card");
+    let img = card.querySelector("img");
+    let cartIcon = document.querySelector(".cart-btn");
+
+    let clone = img.cloneNode(true);
+
+    let imgRect = img.getBoundingClientRect();
+    let cartRect = cartIcon.getBoundingClientRect();
+
+    clone.style.position = "fixed";
+    clone.style.left = imgRect.left + "px";
+    clone.style.top = imgRect.top + "px";
+    clone.style.width = img.offsetWidth + "px";
+    clone.style.height = img.offsetHeight + "px";
+    clone.style.transition = "all 0.8s ease";
+    clone.style.zIndex = "1000";
+
+    document.body.appendChild(clone);
+
+    setTimeout(()=>{
+        clone.style.left = cartRect.left + "px";
+        clone.style.top = cartRect.top + "px";
+        clone.style.width = "20px";
+        clone.style.height = "20px";
+        clone.style.opacity = "0.5";
+    },10);
+
+    setTimeout(()=>{
+        clone.remove();
+    },800);
+
+    // 🔥 CLICK EFFECT
+    btn.classList.add("clicked");
+    setTimeout(()=>{
+        btn.classList.remove("clicked");
+    },300);
 }
 
 // Update cart popup
